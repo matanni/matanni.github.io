@@ -700,14 +700,7 @@ section li {
 }
 
 /* MOBIILIKORJAUS TAUSTAKUVALLE JA SISÄLLÖLLE */
-@media (max-width: 768px) {
-    body {
-        /* Vaihdetaan fixed -> scroll mobiililaitteille, jotta tausta näkyy oikein */
-        background-attachment: scroll !important;
-        background-size: cover !important;
-        background-position: center top !important;
-    }
-
+@media (max-width: 768px)
     /* Varmistetaan, että tekstilaatikot eivät mene ruudun ulkopuolelle */
     .container,
     #site-content,
@@ -763,7 +756,14 @@ body,
         background-repeat: no-repeat !important;
         background-attachment: fixed !important;
         height: 100% !important;
-    }
+
+     /* Nostetaan kuvan kirkkautta ja kontrastia suoraan CSS:llä */
+    filter: brightness(1.3) contrast(1.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
 
     body {
         background: transparent !important;
