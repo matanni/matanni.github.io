@@ -17,11 +17,6 @@ h1, h2 {
     padding: 80px 20px;
 }
 
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
-}
-
 
 #countdown {
     font-size: 1.2rem;
@@ -44,7 +39,7 @@ h1, h2 {
 
 /* Kirkas kultainen liukuväri otsikolle + hehku */
 .hero h1 {
-    font-size: 3.8rem;
+    font-size: 4rem;
     margin: 0;
     background: linear-gradient(135deg, #fff2a8 0%, #ffd700 50%, #daa520 100%);
     -webkit-background-clip: text;
@@ -242,12 +237,18 @@ h1, h2, h3 {
 /* 4. HERO / OTSIKOINTIOSIO */
 
 .hero h1 {
-    font-size: 3.8rem;
+    font-size: 4rem;
     margin: 0;
     /* Kultainen liukuväri otsikkoon */
     background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;}
+    -webkit-text-fill-color: transparent;
+}
+
+ html, body {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
 
 .hero .date {
     color: var(--gold-light);
