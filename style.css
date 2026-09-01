@@ -753,22 +753,31 @@ body,
         background-image: none !important;
         min-height: 100vh !important;
     }
-
-    /* 2. KIERRETÄÄN MOBIILISELAIMEN RAJOITUS:
-          Luodaan kiinteä taustakerros suoraan näytön taustalle */
-    body::before {
+    
+/* 2. OPTIMOITU KIIINTEÄ TAUSTA MOBIILILAITTEELLE */
+    body::before,
+    #password-overlay::before,
+    .login-overlay::before,
+    .password-page::before {
         content: "" !important;
-        position: fixed !important; /* Lukitsee kerroksen puhelimen lasiin */
+        position: fixed !important;
         top: 0 !important;
         left: 0 !important;
-        width: 100vw !important;
-        height: 100vh !important;
-        background-image: url('Tausta-mobiili.jpeg') !important;
-        background-size: cover !important; /* Pitää raidat aina oikeissa kulmissa */
+        right: 0 !important;
+        bottom: 0 !important; /* height: 100vh sijaan käytetään top/bottom/left/right 0, mikä lukitsee taustan täydellisesti */
+        width: 100% !important;
+        height: 100% !important;
+        background-image: url('Tausta_mobiili.jpeg') !important;
+        background-size: cover !important;
         background-position: center center !important;
         background-repeat: no-repeat !important;
-        z-index: -1 !important; /* Pysyy aina kaiken sisällön takana */
+        z-index: -1 !important;
         pointer-events: none !important;
+        
+        /* PAKOTTAA PUHELIMEN NÄYTÖNOHJAIMEN LUKITSEMAAN TAUSTAN: */
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        will-change: transform;
     }
 
     /* 3. SALASANASIVU / OVERLAY */
