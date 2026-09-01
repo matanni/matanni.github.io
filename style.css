@@ -782,8 +782,9 @@ body,
         background-image: url('Tausta_mobiili.jpeg') !important;
         /* Täysin sama toiminta kuin tietokoneella: kuva täyttää ruudun ilman vääristymiä */
         background-size: cover !important;
-        background-position: center center !important;
         background-repeat: no-repeat !important;
+        background-position: top center !important;
+        background-attachment: fixed !important;
         /* Lukitaan kuva puhelimen lasiin kiinni */
         height: 100% !important;
     }
