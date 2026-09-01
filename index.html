@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kolmekymppinen</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Raleway:wght@300;400&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<link rel="stylesheet" href="style.css">
+
+<body>
+      <div id="password-overlay">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <div class="password-box">
+            <h2>Synttärisivusto</h2>
+            <p>Syötä salasana päästäksesi sivulle:</p>
+            <input type="password" id="password-input" placeholder="Salasana">
+            <button onclick="checkPassword()">Kirjaudu</button>
+            <p id="error-message" style="color: red; display: none;">Väärä salasana, yritä uudelleen tai jää kotiisi!</p>
+        </div>
+</div>
+
+<header class="hero">
+    <!-- 1. Pääotsikko (Playfair Display SC) -->
+    <h1>Kolmekymppinen</h1>
+
+    <!-- 2. Päivämäärä ja paikka -->
+    <p class="hero-subtitle">31.10.2026 | klo 15.00 | Tampere</p>
+
+    <!-- 3. Laskurilaatikko (Dynaaminen) -->
+    <div class="countdown-box">
+    <span id="countdown">Ladataan...</span>
+    </div>
+</header>
+
+
+<!-- VÄLILEHTIEN PAINIKKEET -->
+<nav class="navbar">
+    <button class="tab-btn active" onclick="openTab(event, 'etusivu')">Etusivu</button>
+    <button class="tab-btn" onclick="openTab(event, 'info')">Info</button>
+    <button class="tab-btn" onclick="openTab(event, 'saapuminen')">Saapuminen</button>
+    <button class="tab-btn" onclick="openTab(event, 'rsvp')">Ilmoittautuminen</button>
+</nav>
+
+<main id="site-content" style="display: none; ">
+
+<!-- VÄLILEHTIEN SISÄLLÖT -->
+
+
+<!-- 1. ETUSIVU (Oletuksena näkyvissä) -->
+<div id="etusivu" class="tab-content active-content">
+    <section class="welcome-card">
+        <h2>Tervetuloa juhlimaan!</h2>
+        <p class="welcome-text">
+            Tervetuloa juhlimaan rakkaan Arttumme syntymäpäivää!
+        
+            <p>Tältä sivulta löydät tietoa ja ohjeita juhlia varten.</p>
+            
+            <p>Tällä hetkellä tärkein asia on muistaa ilmoittautua, jotta osaamme
+                varautua ruokailun ja juomien kanssa. Ilmoittautumaan pääset alla olevasta linkistä tai ylävalikosta. </p>
+
+
+        <!-- Pikalinkki ilmoittautumiseen -->
+        <div style="margin-top: 30px;">
+            <button class="btn" onclick="goToTab('rsvp')">Ilmoittaudu tästä</button>
+        </div>
+        <p></p>
+        <p>Jos tulee kysyttävää, ole yhteydessä Anniin! </p>
+    </section>
+</div>
+
+<!-- 2. INFO -->
+<div id="info" class="tab-content active-content">
+    <section>
+        <h2><I>Info</h2>
+        <p>Tervetuloa juhlimaan lokakuussa!</p>
+        
+        <h3>Aikataulu</h3>
+        <ul class="timeline-list">
+            <li><strong>15:00-16:00</strong> Saapuminen ja alkumalja</li>
+            <li><strong>16:00</strong> Ohjelmaa</li>
+            <li><strong>16:30</strong> Ruokailu</li>
+            <li><strong>18:00</strong> Kahvit</li>
+            <li><strong>19:00</strong> Ohjelmaa</li>
+            <li><strong>20:00</strong> Vapaata juhlintaa</li>
+            <li><strong>00:00</strong> Halukkaat jatkoille!</li>
+        </ul>
+
+        <p>Saavuttehan viimeistään klo 15.45. Jos ehditte paikalle vasta myöhemmin, ilmoitettahan siitä Annille! </p>
+
+        <h3>Pukukoodi päivittyy myöhemmin</h3> 
+        <p>Koska juhlat sijoittuvat Halloweeniin, on vaihtoehtona pukeutua naamiaisasuun päivän teeman mukaisesti tai
+            vaihtoehtoisetsi juhla-asuun. Tästä kysymme mieltymyksiä ilmoittautumisen yhteydessä, ja valitsemme pukukoodin enemmistön mielipiteen mukaan. </p>
+        
+
+        <p>Suosittelemme ottamaan sisäkengät mukaan, jos et halua juhlia sukkasiltaan. Ulkokengät jätetään eteiseen! </p>
+
+
+        <h3>Lahjat/muistamiset</h3>
+        <p>Tärkein lahja Artulle on, että saavut juhlimaan! Voitte kuitenkin muistaa Arttua lahjoittamalla hääkassaamme,
+            sillä Arttu ei kuulemma penniäkään aio laittaa häihimme (koska nekin rahat voi kuulemma käyttää moottoripyörään).
+            Jos siis haluat tulevaisuudessa osallistua häihimme, voit tehdä pienen lahjoituksen hääkassaamme (Mobilepay lipas xxx).
+         </p>
+    </section>
+</div>
+
+<!-- 3. SAAPUMINEN -->
+<div id="saapuminen" class="tab-content">
+    <section>
+        <h2>Saapuminen</h2>
+        <p><strong>Paikka:</strong> Kohtaamispaikka Tampuri, Otavalankatu 12a, Tampere</p>
+        <p><strong>Aika:</strong> Klo 15.00, viimeistään 15.45 </p>
+            
+        <p>Kävellen 3 min rautatieasemalta. Autoille lähistöllä joitakin kadunvarsipaikkoja.</p>
+        <p>Alla olevassa kuvassa oikea ovi. Vasemmalla puolella ovea summeri, painakaa "TAMPURI 1. KERROS".</p>
+
+        <div class="image-grid">
+    <img src="IMG_7624.jpeg" alt="ovi" class="saapuminen">
+    <img src="IMG_7623.jpeg" alt="summeri" class="saapuminen">
+</div>
+    </section>
+</div>
+
+<!-- 4. ILMOITTAUTUMINEN -->
+<div id="rsvp" class="tab-content">
+    <section>
+        <h2>Ilmoittautuminen</h2>
+        <p>Vahvistathan osallistumisesi viimeistään 01.10.2026. alla olevan ilmoittaumisen kautta. Avecit ovat ehdottomasti tervetulleita,
+            ja toivomme avecilta omaa ilmoittautumista!</p>
+        
+        <div class="form-wrapper">
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScuWPFWk0q6NKiKu3mlilgNANA3vOcC-1UV26oZAeE8dw0TRQ/viewform?embedded=true" 
+                    width="100%" 
+                    height="750" 
+                    frameborder="0">Ladataan…</iframe>
+        </div>
+    </section>
+</div>
+
+</main>
+
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+
