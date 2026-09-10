@@ -757,7 +757,7 @@ body,
     /* 1. LUKITAAN TAUSTAKUVA RUUDUN KOKOON (Raidat pysyvät täsmälleen samana joka sivulla) */
     html {
         background-color: #0b1325 !important;
-        background-image: url('Tausta_mobiili1.jpeg) !important;
+        background-image: url('Tausta_mobiili.jpeg) !important;
         /* Mukautetaan kuva täsmälleen näytön leveyteen (vw) ja korkeuteen (vh) */
         background-size: 100vw 100vh !important;
         background-position: top center !important;
