@@ -753,54 +753,44 @@ body,
    ========================================== */
 @media screen and (max-width: 768px) {
 
-    /* Lukitaan taustaväri ja nollataan reunat */
-    html, body {
+    /* 1. LUKITAAN TAUSTAKUVA RUUDUN KOKOON (Raidat pysyvät täsmälleen samana joka sivulla) */
+    html {
         background-color: #0b1325 !important;
+        background-image: url('Tausta_mobiili2.jpeg') !important;
+        /* Mukautetaan kuva täsmälleen näytön leveyteen (vw) ja korkeuteen (vh) */
+        background-size: 100vw 100vh !important;
+        background-position: top center !important;
+        background-repeat: no-repeat !important;
+        background-attachment: fixed !important;
+        height: 100% !important;
+    }
+
+    body {
+        background: transparent !important;
+        min-height: 100vh !important;
         margin: 0 !important;
         padding: 0 !important;
-        min-height: 100% !important;
-        position: relative !important;
     }
 
-    /* 1. KINTEÄ TAUSTAKUVA PSEUDO-ELEMENTILLÄ (Tämä korjaa sinisen ruudun) */
-    body::before {
-        content: "" !important;
-        position: fixed !important; /* Lukitsee kerroksen ruutuun */
-        top: 0 !important;
-        left: 0 !important;
-        width: 100vw !important; /* Ruudun leveys */
-        height: 100vh !important; /* Ruudun korkeus */
-        height: 100dvh !important; /* dvh huomioi mobiiliselaimen osoitepalkin liikkumisen (iOS 15+) */
-        
-        /* Taustakuvan asetukset */
-        background-image: url('Tausta_mobiili.jpeg') !important;
-        background-size: cover !important; /* Täyttää ruudun ilman vääristymiä */
-        background-position: top center !important; /* Keskittää kuvan */
-        background-repeat: no-repeat !important;
-        
-        /* Tärkeät sijoitteluasetukset */
-        z-index: -1 !important; /* Vie kuvan kaiken muun tekstin TAAKSE */
-        pointer-events: none !important; /* Estää hiiren/sormen nappaamasta tähän kerrokseen */
-        
-        /* Hardware-kiihdytys estää taustan nykimisen ja parantaa suorituskykyä mobiililla */
-        -webkit-transform: translateZ(0);
-        transform: translateZ(0);
-        will-change: transform;
-    }
-
-    /* 2. SALASANASIVU / OVERLAY / CONTAINERIT (Siirretään z-index-asetukset) */
-    /* Varmistetaan, että sisältölaatikot näkyvät kuvan PÄÄLLÄ */
+    /* 2. SALASANASIVU / OVERLAY (Peittää takana olevan valikon ja otsikon kokonaan) */
     #password-overlay,
     .login-overlay,
     .login-body,
-    .password-page,
-    .container {
-        background-color: transparent !important;
-        position: relative !important;
-        z-index: 10 !important;
+    .password-page
+    html {
+        background-color: #0b1325 !important;
+        background-image: url('Tausta_mobiili2.jpeg') !important;
+        /* Täysin sama toiminta kuin tietokoneella: kuva täyttää ruudun ilman vääristymiä */
+        background-size: cover !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
+        /* Lukitaan kuva puhelimen lasiin kiinni */
+        background-attachment: fixed !important;
+        height: 100% !important;
     }
+}
 
-    /* 3. TEKSTILAATIKOT JA FROSTED GLASS -KORTIT (Pidetään samana) */
+    /* 3. TEKSTILAATIKOT JA FROSTED GLASS -KORTIT */
     .container,
     .login-box,
     .password-box,
@@ -810,7 +800,7 @@ body,
         -webkit-backdrop-filter: blur(10px) !important;
         border: 1px solid rgba(212, 175, 55, 0.4) !important;
         position: relative !important;
-        z-index: 100 !important;
+        z-index: 1000000 !important;
     }
 
 } /* Media-kyselyn sulku */
