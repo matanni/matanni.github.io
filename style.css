@@ -749,55 +749,58 @@ body,
 }
 
 /* ==========================================
-/* ==========================================
-   MOBIILITYYLIT (Sijoita CSS-tiedoston alalaitaan)
-   ========================================== */
-
-/* ==========================================
    MOBIILITYYLIT (Sijoita CSS-tiedoston alalaitaan)
    ========================================== */
 @media screen and (max-width: 768px) {
 
-    /* Lukitaan taustaväri juurielementtiin */
+    /* Lukitaan taustaväri ja nollataan reunat */
     html, body {
         background-color: #0b1325 !important;
         margin: 0 !important;
         padding: 0 !important;
         min-height: 100% !important;
+        position: relative !important;
     }
 
-    /* KINTEÄ TAUSTAKUVA PSEUDO-ELEMENTILLÄ (Toimii varmasti kaikilla puhelimilla) */
+    /* 1. KINTEÄ TAUSTAKUVA PSEUDO-ELEMENTILLÄ (Tämä korjaa sinisen ruudun) */
     body::before {
         content: "" !important;
-        position: fixed !important;
+        position: fixed !important; /* Lukitsee kerroksen ruutuun */
         top: 0 !important;
         left: 0 !important;
-        width: 100vw !important;
-        height: 100vh !important;
-        height: 100dvh !important; /* dvh huomioi mobiiliselaimen osoitepalkin mukautumisen */
-        background-image: url('Tausta_mobiili2.jpeg') !important;
-        background-size: cover !important;
-        background-position: center center !important;
-        background-repeat: no-repeat !important;
-        z-index: -1 !important;
-        pointer-events: none !important;
+        width: 100vw !important; /* Ruudun leveys */
+        height: 100vh !important; /* Ruudun korkeus */
+        height: 100dvh !important; /* dvh huomioi mobiiliselaimen osoitepalkin liikkumisen (iOS 15+) */
         
-        /* Hardware-kiihdytys estää taustan nykimisen mobiililla */
+        /* Taustakuvan asetukset */
+        background-image: url('Tausta_mobiili.jpeg') !important;
+        background-size: cover !important; /* Täyttää ruudun ilman vääristymiä */
+        background-position: top center !important; /* Keskittää kuvan */
+        background-repeat: no-repeat !important;
+        
+        /* Tärkeät sijoitteluasetukset */
+        z-index: -1 !important; /* Vie kuvan kaiken muun tekstin TAAKSE */
+        pointer-events: none !important; /* Estää hiiren/sormen nappaamasta tähän kerrokseen */
+        
+        /* Hardware-kiihdytys estää taustan nykimisen ja parantaa suorituskykyä mobiililla */
         -webkit-transform: translateZ(0);
         transform: translateZ(0);
+        will-change: transform;
     }
 
-    /* 2. SALASANASIVU / OVERLAY */
+    /* 2. SALASANASIVU / OVERLAY / CONTAINERIT (Siirretään z-index-asetukset) */
+    /* Varmistetaan, että sisältölaatikot näkyvät kuvan PÄÄLLÄ */
     #password-overlay,
     .login-overlay,
     .login-body,
-    .password-page {
-        background-color: #0b1325 !important;
+    .password-page,
+    .container {
+        background-color: transparent !important;
         position: relative !important;
-        z-index: 9999 !important;
+        z-index: 10 !important;
     }
 
-    /* 3. TEKSTILAATIKOT JA FROSTED GLASS -KORTIT */
+    /* 3. TEKSTILAATIKOT JA FROSTED GLASS -KORTIT (Pidetään samana) */
     .container,
     .login-box,
     .password-box,
@@ -807,7 +810,7 @@ body,
         -webkit-backdrop-filter: blur(10px) !important;
         border: 1px solid rgba(212, 175, 55, 0.4) !important;
         position: relative !important;
-        z-index: 1000000 !important;
+        z-index: 100 !important;
     }
 
 } /* Media-kyselyn sulku */
