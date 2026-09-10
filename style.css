@@ -750,79 +750,49 @@ body,
 
 
 /* ==========================================
-   1. YLEISET TYYLIT (Koskee tietokonetta ja mobiilia)
-   ========================================== */
-
-/* SIVUSTON TEEMAAN SOPIVA PAINIKE */
-.spotify-btn {
-    display: inline-block !important;
-    margin-top: 15px !important;
-    padding: 12px 28px !important;
-    background: rgba(11, 19, 37, 0.7) !important;
-    color: #f7e7ce !important;
-    border: 1px solid #d4af37 !important;
-    border-radius: 30px !important;
-    text-decoration: none !important;
-    font-size: 1rem !important;
-    font-weight: 500 !important;
-    backdrop-filter: blur(5px) !important;
-    -webkit-backdrop-filter: blur(5px) !important;
-    transition: all 0.3s ease !important;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
-    position: relative !important;
-    z-index: 999999 !important; /* Varmistaa, että painike on kaikkien kerrosten päällä */
-}
-
-.spotify-btn:hover {
-    background: rgba(212, 175, 55, 0.2) !important;
-    border-color: #ffffff !important;
-    color: #ffffff !important;
-    transform: translateY(-2px) !important;
-    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3) !important;
-}
-
-
 /* ==========================================
-   2. MOBIILITYYLIT (AINA TIEDOSTON VIIMEISENÄ)
+   MOBIILITYYLIT (Sijoita CSS-tiedoston alalaitaan)
    ========================================== */
 @media screen and (max-width: 768px) {
 
-    html, body {
+    /* 1. LUKITAAN TAUSTAKUVA RUUDUN KOKOON (Raidat pysyvät täsmälleen samana joka sivulla) */
+    html {
         background-color: #0b1325 !important;
+        background-image: url('Tausta_mobiili2.jpeg') !important;
+        /* Mukautetaan kuva täsmälleen näytön leveyteen (vw) ja korkeuteen (vh) */
+        background-size: 100vw 100vh !important;
+        background-position: top center !important;
+        background-repeat: no-repeat !important;
+        background-attachment: fixed !important;
+        height: 100% !important;
+    }
+
+    body {
+        background: transparent !important;
+        min-height: 100vh !important;
         margin: 0 !important;
         padding: 0 !important;
-        min-height: 100% !important;
-        position: relative !important;
     }
 
-    body::before {
-        content: "" !important;
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100vw !important;
-        height: 100vh !important;
-        height: 100dvh !important;
-        background-image: url('Tausta_mobiili2.jpeg') !important;
-        background-size: cover !important;
-        background-position: center center !important;
-        background-repeat: no-repeat !important;
-        z-index: -1 !important;
-        pointer-events: none !important;
-        -webkit-transform: translateZ(0);
-        transform: translateZ(0);
-        will-change: transform;
-    }
-
+    /* 2. SALASANASIVU / OVERLAY (Peittää takana olevan valikon ja otsikon kokonaan) */
     #password-overlay,
     .login-overlay,
     .login-body,
-    .password-page {
-        background-color: transparent !important;
-        position: relative !important;
-        z-index: 10 !important;
+    .password-page
+    html {
+        background-color: #0b1325 !important;
+        background-image: url('Tausta_mobiili2.jpeg') !important;
+        /* Täysin sama toiminta kuin tietokoneella: kuva täyttää ruudun ilman vääristymiä */
+        background-size: cover !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
+        /* Lukitaan kuva puhelimen lasiin kiinni */
+        background-attachment: fixed !important;
+        height: 100% !important;
     }
+}
 
+    /* 3. TEKSTILAATIKOT JA FROSTED GLASS -KORTIT */
     .container,
     .login-box,
     .password-box,
@@ -832,7 +802,32 @@ body,
         -webkit-backdrop-filter: blur(10px) !important;
         border: 1px solid rgba(212, 175, 55, 0.4) !important;
         position: relative !important;
-        z-index: 100 !important;
+        z-index: 1000000 !important;
     }
 
-} /* Varmista, että tämä sulkeutuva aaltosulku on täällä! */
+/* SIVUSTON TEEMAAN SOPIVA PAINIKE */
+.spotify-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 28px;
+    background: rgba(11, 19, 37, 0.7) !important; /* Tummansininen tausta */
+    color: #f7e7ce !important;                   /* Pehmeä kulta/kermanvalkoinen teksti */
+    border: 1px solid #d4af37 !important;        /* Kultainen reuna */
+    border-radius: 30px;                         /* Pyöristetyt kulmat */
+    text-decoration: none !important;            /* Poistaa alleviivauksen */
+    font-size: 1rem;
+    font-weight: 500;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    transition: all 0.3s ease;                   /* Sujuva animaatio */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* EFEKTI KUN HIIRENNAPPI TAI SORMET OSUS PAINIKKEESEEN */
+.spotify-btn:hover {
+    background: rgba(212, 175, 55, 0.2) !important; /* Tausta kirkastuu kevyesti */
+    border-color: #ffffff !important;               /* Reuna muuttuu valkoiseksi */
+    color: #ffffff !important;
+    transform: translateY(-2px);                     /* Painike nousee hieman ylöspäin */
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3); /* Kultainen hohto ympärille */
+}
