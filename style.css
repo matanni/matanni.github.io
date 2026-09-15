@@ -1,0 +1,845 @@
+body {
+    font-family: 'Raleway', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #faf9f6;
+    text-align: center;
+}
+
+h1, h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+}
+
+.hero {
+    background-color: #e8ece9;
+    padding: 80px 20px;
+}
+
+
+#countdown {
+    font-size: 1.2rem;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+:root {
+    --bg-color: #0b1325;
+    --card-bg: #131d33;
+    
+    /* KIRKKAAMMAT KULTASÄVYT */
+    --gold-primary: #ffd700;     /* Erittäin kirkas puhdas kulta/keltainen */
+    --gold-light: #fff2a8;       /* Erittäin vaalea ja kirkas samppanja */
+    --border-gold: #e6c656;      /* Terävä ja kirkas kulta kehyksiin (ei läpinäkyvyyttä) */
+    
+    --text-light: #f0f4f8;
+    --text-muted: #b3c0ce;
+}
+
+/* Kirkas kultainen liukuväri otsikolle + hehku */
+.hero h1 {
+    font-size: 4.5rem;
+    margin: 0;
+    background: linear-gradient(135deg, #fff2a8 0%, #ffd700 50%, #daa520 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* Lisää kultaisen valohehkun tekstiin */
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
+}
+
+/* Kirkkaat kultaiset raidat / kehykset kortteihin */
+section, .password-box {
+    background-color: var(--card-bg);
+    padding: 40px;
+    margin-bottom: 40px;
+    border-radius: 12px;
+    /* 1.5px paksu terävä kultainen reunus */
+    border: 1.5px solid var(--border-gold);
+    /* Kultainen varjostus/hehku laatikon ympärille */
+    box-shadow: none !important;
+}
+
+/* Kirkas ylävalikon alapalkki (raita) */
+.navbar {
+    position: relative;
+    top: 0;
+    background-color: rgba(11, 19, 37, 0.95);
+    z-index: 100;
+}
+
+/* Otsikoiden väri ja selkeytys */
+h2, h3 {
+    color: var(--gold-primary);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+}
+
+/* Kirkkaat valikkonapit */
+.tab-btn {
+    background-color: var(--card-bg);
+    color: var(--gold-light);
+    border: 1.5px solid var(--border-gold);
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-family: 'Cormorant Garamond', serif;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+/* Aktiivisen napin napakka kultainen hohto */
+.tab-btn.active {
+    background: linear-gradient(135deg, #ffd700, #c59b27);
+    color: #0b1325;
+    font-weight: bold;
+    border-color: #ffe566;
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
+}
+
+/* Varmistetaan, että itse syöttölaatikko erottuu kauniisti */
+.password-box {
+    background-color: var(--card-bg, #131d33);
+    border: 1px solid var(--gold-primary, #d4af37);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+    text-align: center;
+    max-width: 400px;
+    width: 85%;
+}
+
+.password-box {
+    background: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    max-width: 400px;
+    width: 90%;
+}
+
+.password-box input {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.password-box button {
+    padding: 10px 20px;
+    background-color: #7d8c7c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Keskellä oleva laatikko, johon salasana kirjoitetaan */
+.password-box {
+    background-color: var(--card-bg, #131d33);
+    border: 1px solid var(--gold-primary, #d4af37);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    max-width: 400px;
+    width: 85%;
+}
+
+.form-wrapper {
+    margin-top: 20px;
+}
+
+
+/* 1. MÄÄRITETÄÄN TUMMANSININEN & KULTAINEN VÄRIPALETTI */
+:root {
+    --bg-color: #0b1325;         /* Syvä tummansininen tausta */
+    --card-bg: #131d33;          /* Hieman vaaleampi tummansininen korteille */
+    --gold-primary: #d4af37;     /* Perinteinen lämmin kulta */
+    --gold-light: #f3e5ab;       /* Vaalea kulta/samppanja korostuksiin ja tekstiin */
+    --text-light: #f0f4f8;       /* Kirkas vaalea teksti luettavuuteen */
+    --text-muted: #b3c0ce;       /* Pehmeämpi vaaleanharmaa teksteille */
+    --border-gold: rgba(212, 175, 55, 0.3); /* Hieno kultareunus */}
+
+    /* Tekstilaatikot ja muotoilut */
+section, .password-box {
+    /* RGBA: 3 ensimmäistä numeroa ovat väri, 4. numero (0.75) on läpinäkyvyys 75% */
+    background-color: rgba(19, 29, 51, 0.75) !important;
+    
+    /* Reunukset ja hehkut */
+    border: 1.5px solid #ffd700;
+    border-radius: 12px;
+    padding: 40px;
+    margin-bottom: 40px;
+}
+
+/* 2. YLEISET TYYLIT */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-light);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Otsikot kultaisella värillä */
+h1, h2, h3 {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--gold-primary);
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+/* 3. NAVIGAATIO (Ylävalikko) */
+/* 1. KESKITETTY VALIKKO (NAVBAR) */
+.navbar {
+    display: flex;
+    justify-content: center; /* Keskittää napit vaakasuunnassa */
+    align-items: center;     /* Kohdistaa napit pystysuunnassa */
+    gap: 15px;               /* Jättää tyylikkään välin nappien väliin */
+    width: 100%;
+    margin: 20px 0 30px 0;   /* Jättää tilaa ylä- ja alapuolelle */
+    padding: 0 10px;
+    box-sizing: border-box;
+    flex-wrap: wrap;         /* Huolehtii siitä, että napit rivittyvät nätisti puhelimella */
+}
+
+/* 2. VALIKON NAPIT */
+.tab-btn {
+    background-color: rgba(19, 29, 51, 0.7);
+    color: #fff2a8;
+    border: 1.5px solid #ffd700;
+    padding: 10px 24px;
+    border-radius: 6px;
+    font-family: 'Playfair Display', serif !important;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Aktiivisen napin hehku ja väri */
+.tab-btn.active {
+    background: linear-gradient(135deg, #ffd700, #c59b27);
+    color: #0b1325;
+    font-weight: bold;
+    border-color: #ffe566;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+/* Hover-efekti napille */
+.tab-btn:hover:not(.active) {
+    background-color: rgba(255, 215, 0, 0.2);
+    border-color: #ffe566;
+}
+
+/* 4. HERO / OTSIKOINTIOSIO */
+
+.hero h1 {
+    font-size: 4.5rem;
+    margin: 0;
+    /* Kultainen liukuväri otsikkoon */
+    background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+ html, body {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+.hero .date {
+    color: var(--gold-light);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    margin-top: 15px;
+}
+
+/* 5. KORTIT JA OSIOT */
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+    background: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Korvaa yleinen section-muotoilu tällä: */
+.tab-content section {
+    background-color: rgba(19, 29, 51, 0.75) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    border: 1.5px solid #ffd700 !important;
+    border-radius: 12px !important;
+    padding: 30px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
+}
+
+p, li {
+    color: var(--text-muted);
+}
+
+/* Kultaiset painikkeet */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background: linear-gradient(135deg, #d4af37, #aa820a);
+    color: #0b1325;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+}
+
+/* Salasanakyselyn laatikko */
+.password-box {
+    background-color: var(--card-bg);
+    border: 1px solid var(--gold-primary);
+    color: var(--text-light);
+}
+/* Tervetuloa-osion muotoilut */
+.welcome-card {
+    text-align: center;
+    padding: 50px 30px;
+}
+
+.welcome-text {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    max-width: 600px;
+    margin: 20px auto;
+    color: var(--text-light, #f0f4f8);
+}
+
+.welcome-signature {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    color: var(--gold-primary, #d4af37);
+    margin-top: 30px;
+}/* VÄLILEHTIEN NAPIT */
+.tab-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    background-color: var(--card-bg, #131d33);
+    color: var(--gold-light, #f3e5ab);
+    border: 1px solid var(--border-gold, rgba(212, 175, 55, 0.3));
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-family: 'Cormorant Garamond', serif;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+}
+
+.tab-btn:hover {
+    border-color: var(--gold-primary, #d4af37);
+    color: var(--gold-primary, #d4af37);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+}
+
+/* Aktiivinen (valittu) nappi */
+.tab-btn.active {
+    background: linear-gradient(135deg, #d4af37, #aa820a);
+    color: #0b1325;
+    font-weight: bold;
+    border-color: var(--gold-primary, #d4af37);
+}
+
+/* SISÄLTÖJEN PIILOTUS JA NÄYTTÄMINEN */
+.tab-content {
+    display: none; /* Piilotetaan oletuksena kaikki */
+    animation: fadeIn 0.4s ease-in-out; /* Pehmeä ilmestymistehoste */
+}
+
+.tab-content.active-content {
+    display: block; /* Näytetään vain valittu */
+}
+
+/* Animaatio välilehden vaihtoon */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* Säiliö, joka asettaa kuvat rinnakkain */
+.image-grid {
+    display: flex;
+    gap: 15px;                  /* Kuvien välinen rako pikseleinä */
+    justify-content: center;    /* Keskittää kuvat horisontaalisesti */
+    margin: 20px 0;
+}
+
+/* Yksittäisen kuvan säätö rinnakkain asetettaessa */
+.image-grid .saapuminen {
+    width: 50%;                 /* Kumpikin kuva vie puolet tilasta */
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;          /* Pitää kuvien mittasuhteet siistinä */
+    border-radius: 8px;         /* Pyöristetyt kulmat */
+    border: 2px solid var(--gold-primary, #d4af37); /* Kultainen kehys teeman mukaan */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Mobiiliystävällisyys: kapealla ruudulla kuvat siirtyvät päällekkäin */
+@media (max-width: 600px) {
+    .image-grid {
+        flex-direction: column; /* Muuttaa asetelman allekkain kännykällä */
+    }
+    
+    .image-grid .saapuminen {
+        width: 100%;            /* Täysi leveys puhelimen ruudulla */
+    }
+}
+
+/* 2. SALASANASIVUN TAUSTA (Täysin peittävä ilman etusivun läpikuultavuutta) */
+/* Nollataan tausta-asettelu overlaylle */
+/* SALASANASIVUN KERROS */
+#password-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    background: transparent !important; /* Jättää taustakuvan näkyviin */
+    z-index: 999999 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+/* SALASANALAATIKKO (Umpinainen tausta, jotta se erottuu selkeästi) */
+.password-box {
+    background: rgba(11, 19, 37, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid #d4af37 !important;
+    padding: 30px !important;
+    border-radius: 15px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8) !important;
+    text-align: center !important;
+    max-width: 400px !important;
+    width: 85% !important;
+    position: relative !important;
+    z-index: 1000000 !important;
+}
+
+
+/* 1. KOKO SIVU JA TAUSTAKUVA */
+body {
+    background-color: #0b1325;
+    background-image: url('Tausta.jpeg');
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Taustakuva pysyy paikallaan ja jatkuu koko sivun alas */
+    color: #f0f4f8;
+    margin: 0;
+    padding: 0;
+    font-family: 'Playfair Display', serif !important;
+    font-style: normal !important;
+}
+
+/* 2. FONTIT */
+/* Pääotsikko (Playfair Display SC) */
+.hero h1 {
+    font-family: 'Playfair Display SC', serif !important;
+    font-weight: 700;
+    font-size: 3.7rem;
+    letter-spacing: 3px;
+    margin: 0 0 15px 0;
+    color: #ffd700;
+}
+
+/* 3. HERO-OSIO JA VÄLIT */
+
+/* Hero-osion säiliö */
+.hero {
+    background: transparent !important;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 100px !important;
+    text-align: center;
+}
+
+/* Pääotsikko (esim. Synttärisivusto tai nimipari) */
+.hero h1 {
+    font-family: 'Playfair Display SC', serif !important;
+    font-weight: 700;
+    font-size: 3.7rem;
+    letter-spacing: 3px;
+    color: #ffd700;
+    margin: 0 0 10px 0;
+    text-shadow: 0 0 12px rgba(255, 215, 0, 0.3);
+}
+
+/* Päivämäärä ja paikkakunta */
+.hero-subtitle {
+    font-family: 'Playfair Display', serif !important;
+    font-size: 1.1rem;
+    color: #f0f4f8;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+/* Yksinkertainen, siisti laskurilaatikko (ei päällekkäisiä kehyksiä) */
+.countdown-box {
+    display: inline-flex;       /* Flexbox keskittää tekstin täydellisesti */
+    align-items: center;        /* Keskittää tekstin pystysuunnassa */
+    justify-content: center;   /* Keskittää tekstin vaakasuunnassa */
+    border: 1.5px solid #ffd700;
+    border-radius: 30px;
+    padding: 10px 25px;         /* Tasainen tyhjä tila joka puolella */
+    line-height: 1.2;           /* Estää tekstin valumisen alemmas */
+    background-color: rgba(19, 29, 51, 0.65);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    color: #fff2a8;
+    font-family: 'Playfair Display', serif !important;
+    font-size: 1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    }
+
+/* 4. MAIN & TEKSTILAATIKOT (RAIDAT KUULTAVAT LÄPI) */
+#site-content {
+    background: transparent !important; /* Poistaa umpinaisen tummansinisen taustan! */
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Tekstikortit / välilehdet */
+section, .tab-content section {
+    /* Läpinäkyvä tausta (0.65), jotta raidat näkyvät läpi */
+    background-color: rgba(19, 29, 51, 0.65) !important;
+      backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: 1.5px solid #ffd700;
+    border-radius: 12px;
+    padding: 30px;
+    margin-top: 20px;
+}
+
+/* 5. VALIKKO (NAVBAR) */
+.navbar {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    background: transparent;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    background-color: rgba(19, 29, 51, 0.7);
+    color: #fff2a8;
+    border: 1px solid #ffd700;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 6px;
+    font-family: 'Playfair Display', serif !important;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+    background: linear-gradient(135deg, #ffd700, #c59b27);
+    color: #0b1325;
+    font-weight: bold;
+}
+
+/* Mobiiliasetus pääotsikolle */
+@media (max-width: 600px) {
+    .hero h1 {
+        font-size: 2.4rem;
+        letter-spacing: 2px;
+    }
+}
+
+/* Poistaa luettelopallot ja sisäänvedon listoista */
+ul {
+    list-style: none; /* Poistaa pallot vasemmalta */
+    padding-left: 0;  /* Poistaa listan oletusmarginaalin vasemmalta */
+    margin: 0;
+}
+
+/* Jos haluat kohdistaa aikataulun tekstin kauniisti keskelle */
+ul li {
+    margin-bottom: 10px; /* Jättää pienen välin aikataulukohtien väliin */
+}
+/* 1. SIVUSTON SISÄLTÖALUE (Pakotetaan elementit allekkain keskelle) */
+.page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start !important; /* Pakottaa sisällön alkamaan ylhäältä */
+    align-items: center;
+    width: 100%;
+}
+
+/* 2. VALIKKOPALKKI (NAVBAR) */
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    width: 100%;
+    max-width: 1000px;       /* Sama leveys kuin tekstilaatikolla */
+    margin: 20px auto 10px auto; /* Keskittää palkin automaattisesti */
+    clear: both;             /* Estää rinnakkain asettumisen */
+}
+
+/* 3. MAIN / ETUSIVUN SISÄLTÖ */
+#site-content {
+    width: 100%;
+    max-width: 1000px;       /* Rajoittaa tekstilaatikon leveyden */
+    margin: 0 auto;
+    background: transparent !important;
+}
+
+
+/* 1. LASKURILAATIKKO (Pakotettu keskitys pystysuunnassa) */
+.countdown-box {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 12px 25px !important;
+    line-height: 1 !important; /* Poistaa ylimääräisen tekstikorkeuden */
+    height: auto !important;
+    min-height: unset !important;
+}
+
+.countdown-box span, 
+.countdown-box p {
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1 !important;
+ }
+
+ /* 1. YHTENÄISTETÄÄN KAIKKI LEIPÄTEKSTIT KAIKILLA SIVUILLA */
+.tab-content,
+.tab-content p,
+.tab-content li,
+.tab-content span,
+.tab-content div,
+section p,
+section li {
+    font-family: 'Playfair Display', serif !important;
+    font-style: normal !important;   /* Poistaa kaiken kursivoinnin */
+    font-size: 1.1rem !important;    /* Sama fonttikoko kaikille sivuille */
+    line-height: 1.7 !important;     /* Sama riviväli kaikille sivuille */
+    font-weight: 400 !important;     /* Normaali tekstipaino */
+    color: #f0f4f8 !important;
+}
+
+/* 2. YHTENÄISTETÄÄN SISÄSIVUJEN OTSIKOT (H2, H3) */
+.tab-content h2,
+section h2 {
+    font-family: 'Playfair Display', serif !important;
+    font-style: normal !important;
+    font-size: 2rem !important;      /* Sama koko kaikkien sivujen pääotsikoille */
+    font-weight: 700 !important;
+    color: #ffd700 !important;       /* Kultainen väri otsikoille */
+    margin-bottom: 20px !important;
+}
+
+.tab-content h3,
+section h3 {
+    font-family: 'Playfair Display', serif !important;
+    font-style: normal !important;
+    font-size: 1.4rem !important;    /* Sama koko kaikkien sivujen alaotsikoille */
+    font-weight: 600 !important;
+    color: #fff2a8 !important;
+    margin-top: 20px !important;
+    margin-bottom: 10px !important;
+}
+
+/* 3. POISTETAAN KURSIVOINTI EM- JA I-TÄGEISTÄ (varmuuden vuoksi) */
+.tab-content em,
+.tab-content i {
+    font-style: normal !important;
+}
+
+/* Lisätään tilaa kappaleiden väliin ja väljennetään riviväliä */
+.tab-content p,
+section p {
+    line-height: 1.8 !important;       /* Kasvattaa riviväliä (default on noin 1.4) */
+    margin-bottom: 1.5rem !important;  /* Tekee automaattisesti tyhjää tilaa kappaleiden väliin */
+}
+
+/* Jos tekstissä on listoja (ul/li), väljennetään myös niitä */
+.tab-content ul,
+section ul {
+    margin-bottom: 1.5rem !important;
+}
+
+.tab-content li,
+section li {
+    margin-bottom: 0.5rem !important;  /* Jättää pienen raon listakohtien väliin */
+    line-height: 1.6 !important;
+}
+
+/* MOBIILIKORJAUS TAUSTAKUVALLE JA SISÄLLÖLLE */
+@media (max-width: 768px) {
+    body {
+        /* Vaihdetaan fixed -> scroll mobiililaitteille, jotta tausta näkyy oikein */
+        background-attachment: scroll !important;
+        background-size: cover !important;
+        background-position: center top !important;
+    }
+
+    /* Varmistetaan, että tekstilaatikot eivät mene ruudun ulkopuolelle */
+    .container,
+    #site-content,
+    section {
+        width: 90% !important;
+        max-width: 100% !important;
+        padding: 20px 15px !important;
+        box-sizing: border-border-box;
+    }
+
+    /* Pienennetään pääotsikkoa, jotta se mahtuu kapealle ruudulle */
+    .hero h1 {
+        font-size: 2.0rem !important;
+        width: auto !important;
+        max-width: 100% !important;
+        box-sizing: border-border-box;
+        padding-top: 20px;
+    }
+
+    /* Säädetään laskurilaatikko joustavaksi */
+    .countdown-box {
+        font-size: 0.9rem !important;
+        padding: 8px 15px !important;
+        width: auto !important;
+        max-width: 90% !important;
+    }
+}
+/* 1. TIETOKONEVERSIO (Oletus kaikille laitteille) */
+body, 
+.login-body, 
+.password-page {
+    background-color: #0b1325 !important;
+    background-image: url('Tausta.jpeg') !important;
+    background-size: cover !important;
+    background-position: top center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+}
+
+
+/* ==========================================
+/* ==========================================
+   MOBIILITYYLIT (Sijoita CSS-tiedoston alalaitaan)
+   ========================================== */
+@media screen and (max-width: 768px) {
+
+    /* ==========================================
+   MOBIILITYYLIT (Sijoita CSS-tiedoston alalaitaan)
+   ========================================== */
+@media screen and (max-width: 768px) {
+
+    /* 1. Valmistellaan body: nollataan marginaalit ja varmistetaan z-index-tuki */
+    html, body {
+        background-color: #0b1325 !important; /* Tummansininen pohjaväri varmuudeksi */
+        margin: 0 !important;
+        padding: 0 !important;
+        min-height: 100% !important;
+        /* position: relative; on tärkeä, jotta pseudo-elementti asemoituu oikein */
+        position: relative !important;
+        z-index: 0 !important;
+    }
+
+    /* 2. LUODAAN KIINTEÄ TAUSTAKERROS PSEUDO-ELEMENTILLÄ */
+    /* Tämä kerros pysyy paikallaan ruudulla, eikä liiku skrollatessa */
+    body::before {
+        content: "" !important;
+        position: fixed !important; /* TÄMÄ LUKITSEE KERROKSEN RUUTUUN */
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important; /* Ruudun leveys */
+        height: 100vh !important; /* Ruudun korkeus */
+        height: 100dvh !important; /* dvh huomioi mobiiliselaimen osoitepalkin liikkumisen (iOS 15+) */
+        
+        /* Taustakuvan asetukset */
+        background-image: url('Tausta_mobiili2.jpeg') !important;
+        background-size: cover !important; /* Täyttää ruudun ilman vääristymiä */
+        background-position: center center !important; /* Keskittää kuvan */
+        background-repeat: no-repeat !important;
+        
+        /* Tärkeät sijoitteluasetukset */
+        z-index: -1 !important; /* Vie kuvan kaiken muun tekstin TAAKSE */
+        pointer-events: none !important; /* Estää sormea nappaamasta tähän kerrokseen */
+        
+        /* Hardware-kiihdytys estää taustan nykimisen ja parantaa suorituskykyä mobiililla */
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        will-change: transform;
+    }
+
+    /* 3. VARMISTETAAN SISÄLLÖN NÄKYVYYS (z-index) */
+    /* Kaikki sisältösäiliöt (kuten .container) pitää tuoda tämän kiinteän kerroksen päälle */
+    .container, 
+    #password-overlay, 
+    .login-box, 
+    header, 
+    nav {
+        position: relative !important;
+        z-index: 10 !important; /* Suurempi luku kuin body::before z-index (-1) */
+        
+        /* Poistetaan näistä elementeistä omat taustakuvat, jotta ne eivät peitä kiinteää taustaa */
+        background-image: none !important;
+    }
+
+    /* Muut aiemmat mobiilihienosäädöt (kuten h1 margin-top) */
+    h1 {
+        margin-top: 45px !important;
+    }
+}
+
+/* SIVUSTON TEEMAAN SOPIVA PAINIKE */
+.spotify-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 28px;
+    background: rgba(11, 19, 37, 0.7) !important; /* Tummansininen tausta */
+    color: #f7e7ce !important;                   /* Pehmeä kulta/kermanvalkoinen teksti */
+    border: 1px solid #d4af37 !important;        /* Kultainen reuna */
+    border-radius: 30px;                         /* Pyöristetyt kulmat */
+    text-decoration: none !important;            /* Poistaa alleviivauksen */
+    font-size: 1rem;
+    font-weight: 500;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    transition: all 0.3s ease;                   /* Sujuva animaatio */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* EFEKTI KUN HIIRENNAPPI TAI SORMET OSUS PAINIKKEESEEN */
+.spotify-btn:hover {
+    background: rgba(212, 175, 55, 0.2) !important; /* Tausta kirkastuu kevyesti */
+    border-color: #ffffff !important;               /* Reuna muuttuu valkoiseksi */
+    color: #ffffff !important;
+    transform: translateY(-2px);                     /* Painike nousee hieman ylöspäin */
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3); /* Kultainen hohto ympärille */
+}
